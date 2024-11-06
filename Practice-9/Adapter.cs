@@ -25,12 +25,12 @@ namespace Practice_9
     }
     public class ExternalLogisticsServiceA
     {
-        public void ShipItem(string itemId)
+        public void ShipItem(int itemId)
         {
             Console.WriteLine($"Item with ID {itemId} shipped by ExternalLogisticsServiceA.");
         }
 
-        public void TrackShipment(string shipmentId)
+        public void TrackShipment(int shipmentId)
         {
             Console.WriteLine($"Tracking the parcel with ID {shipmentId} via ExternalLogisticsServiceA:");
             Console.WriteLine("On the way");
@@ -60,12 +60,14 @@ namespace Practice_9
 
         public void DeliverOrder(string orderId)
         {
-            _serviceA.ShipItem(orderId);
+            int itemId = int.Parse(orderId);
+            _serviceA.ShipItem(itemId);
         }
 
         public void GetDeliveryStatus(string orderId)
         {
-            _serviceA.TrackShipment(orderId);
+            int shipmentId = int.Parse(orderId);
+            _serviceA.TrackShipment(shipmentId);
         }
     }
     public class LogisticsAdapterB : IInternalDeliveryService
